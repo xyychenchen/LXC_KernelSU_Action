@@ -64,6 +64,12 @@ jobs:
       with:
         swap-size-gb: 10
 
+    - name: Install aarch64-linux-gnu
+      run: |
+        sudo apt-get install aarch64-linux-gnu
+        sudo apt-get install gcc-aarch64-linux-gnu
+        export PATH=/usr/aarch64-linux-gnu/bin/:$PATH:/usr/lib/gcc/x86_64-linux-gnu/9:/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrappe        
+
     - name: Setup build kernel environment
       run: |
         echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M")" >> $GITHUB_ENV
