@@ -177,6 +177,12 @@ jobs:
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s ${{ env.KERNELSU_TAG }}
         echo "UPLOADNAME=-KernelSU" >> $GITHUB_ENV
 
+    - name: Install aarch64-linux-gnu
+      run: |
+        sudo apt install aarch64-linux-gnu
+        sudo apt install gcc-aarch64-linux-gnu
+        export PATH=/usr/aarch64-linux-gnu/bin/:$PATH:/usr/lib/gcc/x86_64-linux-gnu/9:/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrappe
+
     - name: Setup Configuration for Kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
